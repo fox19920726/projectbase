@@ -21,7 +21,7 @@ const LayoutMain: FC = () => {
             if (!token) {
               return <Redirect to="/login" />
             }
-            return ( <ContentMain />)
+            return (<ContentMain />)
           }}
         />
       </Switch>

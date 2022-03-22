@@ -1,7 +1,7 @@
 import { message } from 'antd' 
 import { useDispatch } from 'react-redux'
 import { getAsyncRoutes } from '@/api/api'
-import routes from '@/router/routers' 
+import generatePaths from '@/router/routers' 
 import { setRoutes } from '@/store/slice/getRoutes'
 
 function useRouteList() {
@@ -9,6 +9,7 @@ function useRouteList() {
 
   const handleAsyncRoutes = async (): Promise<void> => {
     const { rows, code, msg } = await getAsyncRoutes()
+    const paths = await generatePaths
   
     if (code === 200) {
       /* 
@@ -16,7 +17,7 @@ function useRouteList() {
       * 因为setPath会改变paths的值
       * 导致开发的时候多次请求接口累积paths
       */
-      dispatch(setRoutes([...routes, ...rows]))
+      dispatch(setRoutes([...paths, ...rows]))
     } else {
       message.info(msg)
     }

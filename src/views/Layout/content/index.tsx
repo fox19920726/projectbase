@@ -1,10 +1,6 @@
 import React, { FC, useEffect } from 'react'
 import { useUserInfo, useRouteList } from '@/hooks'
-import { Layout } from 'antd'
-import LayoutHeader from '@/views/Layout/header'
-import LayoutSider from '@/views/Layout/sider'
 import LayoutContent from './components/layoutContent'
-import TagView from '@/views/Layout/tagView'
 
 const ContentMain: FC = () => {
   const { handleInfo } = useUserInfo()
@@ -22,16 +18,9 @@ const ContentMain: FC = () => {
   }, [])
 
   return (
-    <Layout>
-      <LayoutHeader />
-      <Layout>
-        <LayoutSider />
-        <Layout>
-          <TagView />
-          <LayoutContent />
-        </Layout>
-      </Layout>
-    </Layout>
+    <>
+      <LayoutContent />
+    </>
   )
 }
 
